@@ -1,7 +1,7 @@
 
 
 export const signup = async (req, res) => {
-     console.log(signup)
+    console.log(signup)
 }
 
 export const login = async (req, res) => {
