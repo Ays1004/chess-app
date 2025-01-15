@@ -2,36 +2,14 @@ import mongoose from "mongoose";
 
 const gameSchema = new mongoose.Schema(
   {
-    players: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-          required: true,
-        },
-        username: {
-          type: String,
-          required: true,
-        },
-        color: {
-          type: String,
-          enum: ["white", "black"],
-          required: true,
-        },
-      },
-    ],
-    moves: [{ type: String }],
-    status: {
-      type: String,
-      enum: ["ongoing", "completed", "abandoned"],
-      default: "ongoing",
+    players: {
+      white: { type: String, required: true },
+      black: { type: String, required: true },
     },
-    winner: {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
+    moves: [{ type: mongoose.Schema.Types.ObjectId, ref: "Move" }],
+    result: {
+      type: String,
+      default: "ongoing",
     },
   },
   { timestamps: true }
@@ -39,4 +17,4 @@ const gameSchema = new mongoose.Schema(
 
 const Game = mongoose.model("Game", gameSchema);
 
-export default Game
+export default Game;
