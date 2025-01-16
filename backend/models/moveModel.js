@@ -1,15 +1,22 @@
 import mongoose from "mongoose";
 
 const moveSchema = new mongoose.Schema({
-    game: {
+    id:{
+        type:String,
+        required: true,
+    },
+    gameId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Game',
         required: true
     },
-    player:{
-        type:String,
-        enum: ['white', 'black'],
-        required:true
+    from:{
+        type: String,
+        required:true,
+    },
+    to:{
+        type: String,
+        required:true,
     },
     moveNumber:{
     type:Number,
