@@ -11,8 +11,8 @@ export const postMove = async (req, res) => {
   if (!game) {
     game = await Game.create({
       players: {
-        player1Id: 1214124,
-        player2Id: 12141246,
+        player1: 1214124,
+        player2: 12141246,
       },
       gameId: gameId,
       moves: [],

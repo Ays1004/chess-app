@@ -2,18 +2,26 @@ import mongoose from "mongoose";
 
 const gameSchema = new mongoose.Schema(
   {
-    gameId:{
+    gameId: {
       type: String,
       required: true,
     },
     players: {
-      player1Id: { type: String, required: true },
-      player2Id: { type: String, required: true },
+      player1: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      player2: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
     },
     moves: [{ type: mongoose.Schema.Types.ObjectId, ref: "Move" }],
-    moveCount:{
+    moveCount: {
       type: Number,
-      required: true
+      required: true,
     },
     result: {
       type: String,
