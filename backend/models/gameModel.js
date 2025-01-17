@@ -18,6 +18,10 @@ const gameSchema = new mongoose.Schema(
         required: true,
       },
     },
+    FENstring: {
+      type: String,
+      default: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+    },
     moves: [{ type: mongoose.Schema.Types.ObjectId, ref: "Move" }],
     moveCount: {
       type: Number,

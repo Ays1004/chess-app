@@ -1,4 +1,7 @@
 import Game from "../models/gameModel.js";
+import { Chess } from 'chess.js'
+
+const chess = new Chess()
 
 export const postMove = async (req, res) => {
   const { move } = req.body;
@@ -9,16 +12,11 @@ export const postMove = async (req, res) => {
   let game = await Game.findOne({ gameId });
 
   if (!game) {
-    game = await Game.create({
-      players: {
-        player1: 1214124,
-        player2: 12141246,
-      },
-      gameId: gameId,
-      moves: [],
-      moveCount: 0,
-    });
+    return res.status(404).json({
+      error:"Please create a game"
+    })
   }
+  console.log("found game")
 };
 
 export const getMove = async (req, res) => {
