@@ -25,12 +25,10 @@ export const legalMoves = (FEN) => {
 }
 
 //gameStave evaluator:
-export const evaluateGameState = (FEN) => {
+export const isGameOver = (FEN) => {
     const chess = new Chess(FEN);
-    return {
-        inCheck: chess.in_check(),
-        inCheckmate: chess.in_checkmate(),
-        inDraw: chess.in_draw(),
-        inStalemate: chess.in_stalemate(),
-    };
+    if(chess.isGameOver()){
+        return true;
+    }
+    return false;
 }
