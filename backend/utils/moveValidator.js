@@ -1,23 +1,31 @@
 import { Chess } from "chess.js";
 
 // validator Function :
-const isValidMove = (FEN, move) => {
-    const chess = new Chess(FEN)
-    mov = chess.move(move);
-    if(!mov){
-        return { valid: false, message: 'Invalid move' };
+export const isValidMove = (fen, move) => {
+    try {
+        const chess = new Chess(fen);
+        const result = chess.move(move); // Attempt to make the move
+        return result !== null; // Return true if the move is valid, false if not
+    } catch (error) {
+        return false; // Catch the error and return false if move is invalid
     }
-    return { valid: true, newFen: chess.fen() };
+}
+
+//moveSetter:
+export const setMove = (fen, move) => {
+    const chess = new Chess(fen)
+    chess.move(move);
+    return chess.fen()
 }
 
 //legal moves:
-const legalMoves = (FEN) => {
+export const legalMoves = (FEN) => {
     const chess = new Chess(FEN)
     return chess.moves();
 }
 
 //gameStave evaluator:
-function evaluateGameState(FEN) {
+export const evaluateGameState = (FEN) => {
     const chess = new Chess(FEN);
     return {
         inCheck: chess.in_check(),
