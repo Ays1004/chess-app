@@ -22,11 +22,6 @@ const gameSchema = new mongoose.Schema(
       type: String,
       default: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
     },
-    moves: [{ type: mongoose.Schema.Types.ObjectId, ref: "Move" }],
-    moveCount: {
-      type: Number,
-      required: true,
-    },
     result: {
       type: String,
       default: "ongoing",
