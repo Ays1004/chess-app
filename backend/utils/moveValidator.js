@@ -18,12 +18,6 @@ export const setMove = (fen, move) => {
     return chess.fen()
 }
 
-//legal moves:
-export const legalMoves = (FEN) => {
-    const chess = new Chess(FEN)
-    return chess.moves();
-}
-
 //gameStave evaluator:
 export const isGameOver = (FEN) => {
     const chess = new Chess(FEN);
@@ -31,4 +25,10 @@ export const isGameOver = (FEN) => {
         return true;
     }
     return false;
+}
+
+//legal moves:
+export const legalMoves = (FEN) => {
+    const chess = new Chess(FEN)
+    return chess.moves();
 }
