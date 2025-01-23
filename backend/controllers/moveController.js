@@ -1,5 +1,6 @@
 import Game from "../models/gameModel.js";
 import { isValidMove, setMove } from "../utils/moveValidator.js";
+import { io } from "../server.js";
 
 export const postMove = async (req, res) => {
   const { move } = req.body;
@@ -28,6 +29,8 @@ export const postMove = async (req, res) => {
   game.FENstring = FENstring;
 
   await game.save();
+
+  io.emit("move", {gameId, FENstring });
 
   return res.status(200).json({
     message: "Move applied successfully",
