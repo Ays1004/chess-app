@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 
 const socket = io("http://localhost:5000");
 
@@ -23,8 +24,12 @@ function App() {
     };
   }, []);
   return (
-    <div className="p-4 h-screen flex items-center justify-center">
-      <Home />
+    <div className="p-4 w-screen h-screen flex items-center justify-center w-screen">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </div>
   );
 }

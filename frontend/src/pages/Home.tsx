@@ -14,8 +14,20 @@ const Home = () => {
     });
   }, []);
   return (
-    <div className="flex w-3/5 rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 ">
-      <Chessboard position={position} />
+    <div className="flex flex-col items-center justify-center min-w-96 w-lg mx-auto">
+      <div className="w-full p-3 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
+        <div className="w-full ">
+        <Chessboard position={position} />
+        </div>
+        <br />
+        <div>
+            <input
+              type="room"
+              placeholder="Enter Room Id"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </div>
+      </div>
     </div>
   );
 };
